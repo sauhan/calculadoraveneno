@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculadora Mecânica Veneno</title>
+    <style>
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background: #000;
+            color: #0f0;
+            text-align: center;
+        }
+        header {
+            background: #111;
+            padding: 20px;
+        }
+        h1 {
+            margin-top: 10px;
+            font-size: 2.5rem;
+        }
+        .container {
+            margin: 30px auto;
+            padding: 20px;
+            background: #111;
+            border-radius: 10px;
+            max-width: 500px;
+            box-shadow: 0 0 20px #0f0;
+        }
+        input, button {
+            padding: 10px;
+            font-size: 1rem;
+            margin: 10px;
+            border-radius: 5px;
+            border: none;
+        }
+        input {
+            width: 80%;
+            text-align: center;
+        }
+        button {
+            background: #0f0;
+            color: #000;
+            cursor: pointer;
+            font-weight: bold;
+        }
+        button:hover {
+            background: #1aff1a;
+        }
+        .resultado {
+            margin-top: 15px;
+            font-size: 1.2rem;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Calculadora Mecânica Veneno</h1>
+    </header>
+
+    <div class="container">
+        <h2>Calculadora 1 — Adicionar 60%</h2>
+        <input type="number" id="valor1" placeholder="Digite o valor">
+        <button onclick="calcular60()">Calcular</button>
+        <div class="resultado" id="resultado1"></div>
+    </div>
+
+    <div class="container">
+        <h2>Calculadora 2 — Tunagem</h2>
+        <input type="number" id="valor2" placeholder="Digite o valor da tunagem">
+        <button onclick="calcularTunagem()">Calcular</button>
+        <div class="resultado" id="resultado2"></div>
+    </div>
+
+    <script>
+        function formatarReal(valor) {
+            return valor.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' });
+        }
+
+        function calcular60() {
+            let valor = parseFloat(document.getElementById('valor1').value);
+            if (isNaN(valor)) return;
+            let resultado = valor * 1.6;
+            document.getElementById('resultado1').innerHTML = `Resultado: ${formatarReal(resultado)}`;
+        }
+
+        function calcularTunagem() {
+            let valor = parseFloat(document.getElementById('valor2').value);
+            if (isNaN(valor)) return;
+            let com60 = valor * 1.6;
+            let adicional = valor * 0.6;
+            let mecanica = adicional * 0.15;
+
+            document.getElementById('resultado2').innerHTML = `
+                Valor original: ${formatarReal(valor)}<br>
+                Valor com 60%: ${formatarReal(com60)}<br>
+                Parte da Mecânica (15% dos 60%): ${formatarReal(mecanica)}
+            `;
+        }
+    </script>
+</body>
+</html>
