@@ -89,13 +89,12 @@
             let valor = parseFloat(document.getElementById('valor2').value);
             if (isNaN(valor)) return;
             let com60 = valor * 1.6;
-            let adicional = valor * 0.6;
-            let mecanica = adicional * 0.15;
+            let mecanica = valor * 0.15; // corrigido: 15% do valor total
 
             document.getElementById('resultado2').innerHTML = `
                 Valor original: ${formatarReal(valor)}<br>
                 Valor com 60%: ${formatarReal(com60)}<br>
-                Parte da Mecânica (15% dos 60%): ${formatarReal(mecanica)}
+                Parte da Mecânica (15% do valor total): ${formatarReal(mecanica)}
             `;
         }
     </script>
