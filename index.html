@@ -51,6 +51,8 @@
         .resultado {
             margin-top: 15px;
             font-size: 1.2rem;
+            text-align: left;
+            padding-left: 10%;
         }
     </style>
 </head>
@@ -80,23 +82,34 @@
 
         function calcular60() {
             let valor = parseFloat(document.getElementById('valor1').value);
-            if (isNaN(valor)) return;
+            if (isNaN(valor)) {
+                document.getElementById('resultado1').innerHTML = 'Por favor, insira um valor válido.';
+                return;
+            };
             let resultado = valor * 1.6;
             document.getElementById('resultado1').innerHTML = `Resultado: ${formatarReal(resultado)}`;
         }
 
         function calcularTunagem() {
             let valor = parseFloat(document.getElementById('valor2').value);
-            if (isNaN(valor)) return;
-            let com60 = valor * 1.6;
-            let mecanica = valor * 0.15; // corrigido: 15% do valor total
+            if (isNaN(valor)) {
+                 document.getElementById('resultado2').innerHTML = 'Por favor, insira um valor válido.';
+                return;
+            }
+            
+            let valorCom60 = valor * 1.6;
+            let parteMecanica = valor * 0.15;
+            let valorFinalCliente = valorCom60 - parteMecanica;
 
             document.getElementById('resultado2').innerHTML = `
-                Valor original: ${formatarReal(valor)}<br>
-                Valor com 60%: ${formatarReal(com60)}<br>
-                Parte da Mecânica (15% do valor total): ${formatarReal(mecanica)}
+                Valor Original: ${formatarReal(valor)}<br>
+                Valor com +60%: ${formatarReal(valorCom60)}<br>
+                <hr>
+                <strong>Valor a cobrar do cliente: ${formatarReal(valorFinalCliente)}</strong><br>
+                Valor para a Mecânica: ${formatarReal(parteMecanica)}
             `;
         }
     </script>
 </body>
 </html>
+
