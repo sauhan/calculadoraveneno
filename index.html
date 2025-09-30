@@ -99,13 +99,15 @@
             
             let valorCom60 = valor * 1.6;
             let parteMecanica = valorCom60 * 0.15;
+            let seuLucro = valorCom60 - parteMecanica;
 
             document.getElementById('resultado2').innerHTML = `
                 Valor Original: ${formatarReal(valor)}<br>
                 Valor com +60%: ${formatarReal(valorCom60)}<br>
                 <hr>
                 <strong>Valor a cobrar do cliente: ${formatarReal(valorCom60)}</strong><br>
-                Valor para a Mecânica: ${formatarReal(parteMecanica)}
+                Valor para a Mecânica: ${formatarReal(parteMecanica)}<br>
+                Seu Lucro: ${formatarReal(seuLucro)}
             `;
         }
     </script>
